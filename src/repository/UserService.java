@@ -59,15 +59,20 @@ public class UserService implements GenericService<User> {
                 
                 switch(tipUser) {
                     case "Admin":
+                        Admin admin = new Admin(rs.getString("nume"), rs.getString("email"), rs.getString("telefon"), rs.getString("parola"));
+                        admin.setId(rs.getInt("id"));
+                        users.add(admin);
                         break;
                     case "Client":
                         Adresa adresa = new Adresa(rs.getString("adresa_oras"), rs.getString("adresa_strada"), rs.getInt("adresa_numar"));
                         Client client = new Client(rs.getString("nume"), rs.getString("email"), rs.getString("telefon"), rs.getString("parola"), adresa);
+                        client.setId(rs.getInt("id"));
                         users.add(client);
                         break;
                     case "Curier":
-                        Curier curier = new Curier(rs.getString("nume"), rs.getString("telefon"), rs.getString("email"), rs.getString("parola"), rs.getString("tip_vehicul"));
+                        Curier curier = new Curier(rs.getString("nume"), rs.getString("email"), rs.getString("telefon"), rs.getString("parola"), rs.getString("tip_vehicul"));
                         curier.setEsteDisponibil(rs.getBoolean("este_disponibil"));
+                        curier.setId(rs.getInt("id"));
                         users.add(curier);
                         break;
                 }

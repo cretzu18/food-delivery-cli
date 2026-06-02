@@ -1,6 +1,10 @@
 import model.*;
 import repository.*;
 import service.*;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Main {
@@ -249,6 +253,7 @@ public class Main {
                         System.out.print("Folositi adresa implicita? (Da/Nu): ");
                         String raspuns = scanner.nextLine();
                         if (raspuns.equalsIgnoreCase("da")) {
+                            salveazaComanda();
                             service.clientPlaseazaComanda(adresaImplicita);
                         } else {
                             System.out.print("Oras: ");
@@ -258,6 +263,7 @@ public class Main {
                             System.out.print("Numar: ");
                             int numar = Integer.parseInt(scanner.nextLine());
 
+                            salveazaComanda();
                             service.clientPlaseazaComanda(new Adresa(oras, strada, numar));
                         }
                         break;
@@ -332,6 +338,25 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println("Optiunea trebuia sa fie un numar intreg.");
             }
+        }
+    }
+
+    private static void salveazaComanda() {
+        LocalDateTime now = LocalDateTime.now();
+        String path = "./comenzi.csv";
+    
+        double totalCos = ((Client) service.getUserLogat()).getTotalCos();
+
+        String line = ((Client) service.getUserLogat()).getNume() + "," + 
+                        now + "," + 
+                        totalCos + "\n";
+
+        File file = new File(path);
+
+        try (FileWriter fw = new FileWriter(file, true);) {
+            fw.write(line);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

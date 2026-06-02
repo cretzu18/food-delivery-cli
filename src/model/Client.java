@@ -44,6 +44,14 @@ public class Client extends User{
         cosCumparaturi.clear();
     }
 
+    public double getTotalCos() {
+        double total = 0;
+        for (Map.Entry<Produs, Integer> entry : cosCumparaturi.entrySet()) {
+            total += entry.getKey().getPret() * entry.getValue();
+        }
+        return total;
+    }
+
     @Override
     public String toString() {
         return "Client: " + getNume() + " | Contact: " + getEmail() + " / " + getTelefon();

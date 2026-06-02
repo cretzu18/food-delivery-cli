@@ -6,7 +6,7 @@ INSERT INTO users (nume, telefon, email, parola, tip_user, adresa_oras, adresa_s
 ('Ion Popescu', '0711111111', 'ion@app.ro', 'client', 'Client', 'Bucuresti', 'Eroilor', 10, NULL, NULL),
 ('Maria Ionescu', '0711222333', 'maria@app.ro', 'client', 'Client', 'Bucuresti', 'Unirii', 25, NULL, NULL),
 ('Vasile Curierul', '0722222222', 'vasile@app.ro', 'curier', 'Curier', NULL, NULL, NULL, 'Bicicleta', TRUE),
-('Mihai Livratorul', '0733333333', 'mihai@app.ro', 'curier', 'Curier', NULL, NULL, NULL, 'Scuter', FALSE);
+('Mihai Livratorul', '0733333333', 'mihai@app.ro', 'curier', 'Curier', NULL, NULL, NULL, 'Scuter', TRUE);
 
 -- Populare Restaurante
 INSERT INTO restaurante (nume, specific, rating, numar_recenzii) VALUES
@@ -29,14 +29,3 @@ INSERT INTO produse (restaurant_id, nume, descriere, pret, calorii, tip_produs, 
 
 -- Produse pentru Pizza Hut (id: 3)
 (3, 'Pizza Margherita', 'Pizza cu sos de rosii, mozzarella si busuioc', 30.0, 800, 'Mancare', 450, NULL, NULL);
-
--- Adaugam o comanda de test pentru Ion Popescu catre Burger King, livrata de Vasile
-INSERT INTO comenzi (client_id, curier_id, restaurant_id, pret_total, status) VALUES
-(2, 4, 1, 45.0, 'In Curs');
-
--- Adaugam produsele comenzii in `comanda_produs`
--- Comanda 1 contine: 1 Cheeseburger, 1 Cartofi, 1 Cola
-INSERT INTO comanda_produs (comanda_id, produs_id, cantitate) VALUES
-(1, 1, 1),
-(1, 2, 1),
-(1, 6, 1);
