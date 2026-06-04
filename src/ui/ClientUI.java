@@ -35,10 +35,12 @@ public class ClientUI {
 
                 switch (optiune) {
                     case 1:
+                        CsvExportService.scrieAudit("client_vizualizare_restaurante");
                         service.afiseazaRestaurante();
                         break;
 
                     case 2:
+                        CsvExportService.scrieAudit("client_vizualizare_meniu");
                         service.afiseazaRestaurante();
                         System.out.print("Restaurantul pentru care vrei sa vezi produsele: ");
                         String restaurant = scanner.nextLine();
@@ -46,6 +48,7 @@ public class ClientUI {
                         break;
 
                     case 3:
+                        CsvExportService.scrieAudit("client_adauga_in_cos");
                         service.afiseazaRestaurante();
                         System.out.print("Din ce restaurant? ");
                         String numeRestaurant = scanner.nextLine();
@@ -58,17 +61,18 @@ public class ClientUI {
                         break;
 
                     case 4:
+                        CsvExportService.scrieAudit("client_vizualizare_cos");
                         service.clientVizualizareCos();
                         break;
 
                     case 5:
+                        CsvExportService.scrieAudit("client_plaseaza_comanda");
                         Adresa adresaImplicita = ((Client) service.getUserLogat()).getAdresaImplicita();
                         System.out.println(adresaImplicita);
                         System.out.print("Folositi adresa implicita? (Da/Nu): ");
                         String raspuns = scanner.nextLine();
                         if (raspuns.equalsIgnoreCase("da")) {
                             Client c = (Client) service.getUserLogat();
-                            CsvExportService.salveazaComanda(c.getNume(), c.getTotalCos());
                             service.clientPlaseazaComanda(adresaImplicita);
                         } else {
                             System.out.print("Oras: ");
@@ -79,20 +83,22 @@ public class ClientUI {
                             int numar = Integer.parseInt(scanner.nextLine());
 
                             Client c = (Client) service.getUserLogat();
-                            CsvExportService.salveazaComanda(c.getNume(), c.getTotalCos());
                             service.clientPlaseazaComanda(new Adresa(oras, strada, numar));
                         }
                         break;
 
                     case 6:
+                        CsvExportService.scrieAudit("client_vizualizare_istoric");
                         service.clientVizualizareIstoric();
                         break;
 
                     case 7:
+                        CsvExportService.scrieAudit("client_vizualizare_curieri");
                         service.clientVizualizareCurieri();
                         break;
 
                     case 8:
+                        CsvExportService.scrieAudit("client_lasa_rating");
                         service.afiseazaRestaurante();
                         System.out.print("Numele restaurantului pentru rating: ");
                         String numeRes = scanner.nextLine();
@@ -102,6 +108,7 @@ public class ClientUI {
                         break;
 
                     case 0:
+                        CsvExportService.scrieAudit("client_logout");
                         service.logout();
                         running = false;
                         break;

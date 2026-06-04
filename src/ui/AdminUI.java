@@ -3,6 +3,7 @@ package ui;
 import model.Bautura;
 import model.Mancare;
 import model.Restaurant;
+import service.CsvExportService;
 import service.FoodDeliveryService;
 
 import java.util.Scanner;
@@ -33,6 +34,7 @@ public class AdminUI {
                 int optiune = Integer.parseInt(scanner.nextLine());
                 switch (optiune) {
                     case 1:
+                        CsvExportService.scrieAudit("admin_adauga_restaurant");
                         System.out.print("Nume Restaurant: ");
                         String nume = scanner.nextLine();
                         System.out.print("Specific: ");
@@ -42,6 +44,7 @@ public class AdminUI {
                         break;
 
                     case 2:
+                        CsvExportService.scrieAudit("admin_adauga_mancare");
                         service.afiseazaRestaurante();
                         System.out.print("Numele restaurantului pentru produs: ");
                         String numeRestaurant = scanner.nextLine();
@@ -60,6 +63,7 @@ public class AdminUI {
                         break;
 
                     case 3:
+                        CsvExportService.scrieAudit("admin_adauga_bautura");
                         service.afiseazaRestaurante();
                         System.out.print("Numele restaurantului pentru produs: ");
                         String numeRes = scanner.nextLine();
@@ -80,14 +84,17 @@ public class AdminUI {
                         break;
 
                     case 4:
+                        CsvExportService.scrieAudit("admin_vizualizare_utilizatori");
                         service.adminVizualizareUtilizatori();
                         break;
 
                     case 5:
+                        CsvExportService.scrieAudit("admin_vizualizare_restaurante");
                         service.afiseazaRestaurante();
                         break;
 
                     case 6:
+                        CsvExportService.scrieAudit("admin_vizualizare_produse");
                         service.afiseazaRestaurante();
                         System.out.print("Restaurantul pentru care vrei sa vezi produsele: ");
                         String restaurant = scanner.nextLine();
@@ -95,6 +102,7 @@ public class AdminUI {
                         break;
 
                     case 0:
+                        CsvExportService.scrieAudit("admin_logout");
                         service.logout();
                         running = false;
                         break;

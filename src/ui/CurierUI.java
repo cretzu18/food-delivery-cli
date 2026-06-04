@@ -1,6 +1,7 @@
 package ui;
 
 import service.FoodDeliveryService;
+import service.CsvExportService;
 
 import java.util.Scanner;
 
@@ -27,10 +28,12 @@ public class CurierUI {
                 int optiune = Integer.parseInt(scanner.nextLine());
                 switch (optiune) {
                     case 1:
+                        CsvExportService.scrieAudit("curier_vizualizare_comenzi_disponibile");
                         service.curierAfiseazaComenziDisponibile();
                         break;
 
                     case 2:
+                        CsvExportService.scrieAudit("curier_preia_comanda");
                         service.curierAfiseazaComenziDisponibile();
                         System.out.print("Introdu ID-ul comenzii pe care vrei sa o preiei: ");
                         int idPreluare = Integer.parseInt(scanner.nextLine());
@@ -38,10 +41,12 @@ public class CurierUI {
                         break;
 
                     case 3:
+                        CsvExportService.scrieAudit("curier_finalizeaza_comanda");
                         service.curierFinalizeazaComanda();
                         break;
 
                     case 0:
+                        CsvExportService.scrieAudit("curier_logout");
                         service.logout();
                         running = false;
                         break;

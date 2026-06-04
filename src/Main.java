@@ -25,21 +25,26 @@ public class Main {
 
                 switch (optiune) {
                     case 1:
+                        CsvExportService.scrieAudit("login");
                         fereastraLogin();
                         break;
                     case 2:
+                        CsvExportService.scrieAudit("inregistrare_user");
                         fereastraInregistrare();
                         break;
                     case 3:
+                        CsvExportService.scrieAudit("vizualizare_restaurante");
                         service.afiseazaRestaurante();
                         break;
                     case 4:
+                        CsvExportService.scrieAudit("vizualizare_produse");
                         service.afiseazaRestaurante();
                         System.out.print("Restaurantul pentru care vrei sa vezi produsele: ");
                         String restaurant = scanner.nextLine();
                         service.afiseazaProduse(restaurant);
                         break;
                     case 0:
+                        CsvExportService.scrieAudit("exit");
                         running = false;
                         break;
                     default:
